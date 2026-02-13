@@ -1,25 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-    <a class="navbar-brand d-flex align-items-center" routerLink="/">
-        <i class="bi bi-book fs-4 me-2"></i>
-        <span class="fw-semibold">NovelApp</span>
-    </a>
+<header class="border-bottom">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center flex-nowrap py-3">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- Logo -->
+      <a routerLink="/" 
+         class="d-flex align-items-center text-decoration-none me-4 flex-shrink-0">
+        <img src="assets/BookIcon.png" height="50" width="50" class="me-2 rounded-circle"  />
+        <span class="fw-bold fs-5 text-dark">NovelApp</span>
+      </a>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/home" routerLinkActive="active">
-          Home
+      <!-- Navigation Links -->
+      <div class="d-flex gap-4 flex-nowrap align-items-center" style="padding-left: 300px; align-items: center;">
+
+        <a routerLink="/"
+           routerLinkActive="fw-bold text-primary"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="text-dark text-decoration-none"
+           style="padding-right: 40px;">
+          Books
         </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/about" routerLinkActive="active">
-          About
+
+        <a routerLink="/about"
+           routerLinkActive="fw-bold text-primary"
+           class="text-dark text-decoration-none">
+          Authors
         </a>
-      </li>
-    </ul>
+
+      </div>
+
+    </div>
   </div>
-</nav>
+</header>
