@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using NovelApp.Data;
+using NovelApp.Data.Interfaces;
 using NovelApp.DbConfiguaration;
+using NovelApp.Service;
+using NovelApp.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +17,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+
+builder.Services.AddScoped<IBookData, BookData>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 
