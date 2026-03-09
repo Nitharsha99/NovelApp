@@ -1,0 +1,33 @@
+<header class="border-bottom">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center flex-nowrap py-3">
+
+      <!-- Logo -->
+      <a routerLink="/" 
+         class="d-flex align-items-center text-decoration-none me-4 flex-shrink-0">
+        <img src="assets/BookIcon.png" height="50" width="50" class="me-2 rounded-circle"  />
+        <span class="fw-bold fs-5 text-dark">NovelApp</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="d-flex gap-4 flex-nowrap align-items-center" style="padding-left: 300px; align-items: center;">
+
+        <a routerLink="/"
+           routerLinkActive="fw-bold text-primary"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="text-dark text-decoration-none"
+           style="padding-right: 40px;">
+          Books
+        </a>
+
+        <a routerLink="/about"
+           routerLinkActive="fw-bold text-primary"
+           class="text-dark text-decoration-none">
+          Authors
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</header>
