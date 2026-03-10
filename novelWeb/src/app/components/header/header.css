@@ -1,7 +1,14 @@
 a:hover {
-  color: #0d6efd;
+  color: #DAA06D;
 }
 
 header{
-    background-color: #DAA06D;
+    /*background-color: #DAA06D;*/
+    background-color: #652a0E;
+}
+
+a{
+  color:white;
+  font-weight: 600;
+  font-size: 20px;
 }

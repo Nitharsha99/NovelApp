@@ -4,5 +4,6 @@ import { BookList } from './components/book-list/book-list';
 
 export const routes: Routes = [
     {path: '', component: BookList},
+    {path: 'book-list', component: BookList},
     {path: 'book-detail/:id', component: BookDetail}
 ];
