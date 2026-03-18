@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookService } from '../../services/bookService';
 
 @Component({
   selector: 'app-book-detail',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class BookDetail implements OnInit{
 
-  constructor(private router: Router){
+  constructor(private router: Router,
+              private bookService: BookService
+  ){
 
   }
 
@@ -19,6 +22,10 @@ export class BookDetail implements OnInit{
 
   backToList(): void{
     this.router.navigate(['/book-list']);
+  }
+
+  addBook() {
+    //hh
   }
 
 }

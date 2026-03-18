@@ -21,6 +21,8 @@ namespace NovelApp.Data
 
         public async Task<Books> InsertAsync(Books book)
         {
+            book.Created = DateTime.Now;
+            book.Updated = DateTime.Now;
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
             return book;

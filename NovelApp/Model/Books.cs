@@ -9,5 +9,7 @@
         public string AuthorName { get; set; }
         public bool IsCompleted { get; set; }
         public bool IsAlreadyRead { get; set;}
+        public DateTime Created { get; set; }
+        public DateTime Updated { get; set; }
     }
 }
