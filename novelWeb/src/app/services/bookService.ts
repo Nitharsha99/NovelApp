@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Book, BookAdd } from "../models/book";
 import { Observable } from "rxjs";
 
@@ -7,9 +7,8 @@ import { Observable } from "rxjs";
     providedIn: 'root'
 })
 export class BookService {
-    private apiUrl = 'http://localhost:5199/api/book'; // your .NET API
-
-    constructor(private http: HttpClient) { }
+    private http = inject(HttpClient);
+    private apiUrl = 'http://localhost:5199/api/book'; 
 
     addBook(book: BookAdd): Observable<BookAdd> {
         return this.http.post<Book>(this.apiUrl, book);

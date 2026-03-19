@@ -5,25 +5,25 @@
             <div class="card shadow-lg p-4">
                 <h4 class="mb-3">Add Book</h4>
 
-                <form>
+                <form id="bookForm" [formGroup]="bookForm">
                     <div class="form-group row mb-4 mt-3">
                         <label for="title" class="col-sm-3 col-form-label">Title : </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="title" placeholder="Enter Book Title">
+                            <input type="text" formControlName="title" class="form-control" id="title" placeholder="Enter Book Title">
                         </div>
                     </div>
 
                     <div class="form-group row mb-4 mt-3">
                         <label for="author" class="col-sm-3 col-form-label">Author : </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="author" placeholder="Enter Author Name">
+                            <input type="number" formControlName="authorId" class="form-control" id="author" placeholder="Enter Author Name">
                         </div>
                     </div>
 
                     <div class="form-group row mb-4 mt-3">
                         <label for="description" class="col-sm-3 col-form-label">Description : </label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="description" rows="3"
+                            <textarea class="form-control" id="description" formControlName="description" rows="3"
                                 placeholder="Enter Description"></textarea>
                         </div>
                     </div>
@@ -31,14 +31,14 @@
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Book completed :</label>
                         <div class="col-sm-9 d-flex align-items-center">
-                            <input type="checkbox" class="form-check-input" id="completed">
+                            <input type="checkbox" formControlName="isCompleted" class="form-check-input" id="completed">
                         </div>
                     </div>
 
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Already Read :</label>
                         <div class="col-sm-9 d-flex align-items-center">
-                            <input type="checkbox" class="form-check-input" id="alreadyRead">
+                            <input type="checkbox" formControlName="isAlreadyRead" class="form-check-input" id="alreadyRead">
                         </div>
                     </div>
 
