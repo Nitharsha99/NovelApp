@@ -1,4 +1,6 @@
-﻿namespace NovelApp.Model
+﻿using NovelApp.Model.Enum;
+
+namespace NovelApp.Model
 {
     public class Books
     {
@@ -6,7 +8,7 @@
         public string Title { get; set; }
         public int AuthorId { get; set; }
         public string? Description { get; set; }
-        public bool IsCompleted { get; set; }
+        public BookStatus Status { get; set; }
         public bool IsAlreadyRead { get; set;}
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }

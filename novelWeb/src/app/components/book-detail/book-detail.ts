@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookService } from '../../services/bookService';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BookAdd } from '../../models/book';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BookAdd, BookStatus, statusDisplay } from '../../models/book';
 import { CommonModule } from '@angular/common';
 import { Alert } from '../../models/alert';
 
@@ -19,17 +19,20 @@ export class BookDetail implements OnInit {
 
   isLoading = signal(false);
   message = signal<Alert | null>(null);
+  //bookStatus: BookStatus | undefined;
+
+  statusOptions = statusDisplay;
 
   bookForm = this.fb.group({
     title: ['', Validators.required],
     authorId: [null, Validators.required],
     description: [''],
-    isCompleted: [false],
+    status: [null, Validators.required],
     isAlreadyRead: [false]
   })
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+      console.log(this.statusOptions);
   }
 
   backToList(): void {
@@ -44,7 +47,7 @@ export class BookDetail implements OnInit {
         title: this.bookForm.value.title!,        // Non-null assertion
         authorId: this.bookForm.value.authorId!,
         description: this.bookForm.value.description || '',  // Default value
-        isCompleted: this.bookForm.value.isCompleted ?? false,
+        status: this.bookForm.value.status ?? BookStatus.Completed,
         isAlreadyRead: this.bookForm.value.isAlreadyRead ?? false
       };
 
