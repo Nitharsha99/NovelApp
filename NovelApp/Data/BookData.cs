@@ -2,6 +2,7 @@
 using NovelApp.Data.Interfaces;
 using NovelApp.DbConfiguaration;
 using NovelApp.Model;
+using NovelApp.Model.ViewModels;
 
 namespace NovelApp.Data
 {

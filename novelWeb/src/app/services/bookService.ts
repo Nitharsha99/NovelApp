@@ -11,6 +11,6 @@ export class BookService {
     private apiUrl = 'http://localhost:5199/api/book'; 
 
     addBook(book: BookAdd): Observable<BookAdd> {
-        return this.http.post<Book>(this.apiUrl, book);
+        return this.http.post<Book>(`${this.apiUrl}/Insert`, book);
     }
 }

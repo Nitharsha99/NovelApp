@@ -1,5 +1,7 @@
-﻿using NovelApp.Data.Interfaces;
+﻿using AutoMapper;
+using NovelApp.Data.Interfaces;
 using NovelApp.Model;
+using NovelApp.Model.ViewModels;
 using NovelApp.Service.Interfaces;
 
 namespace NovelApp.Service
@@ -7,9 +9,11 @@ namespace NovelApp.Service
     public class BookService: IBookService
     {
         private readonly IBookData _bookData;
-        public BookService(IBookData bookData)
+        private readonly IMapper _mapper;
+        public BookService(IBookData bookData, IMapper mapper)
         {
             _bookData = bookData;
+            _mapper = mapper;
         }
 
         public async Task<List<Books>> GetListAsync()
@@ -17,9 +21,10 @@ namespace NovelApp.Service
             return await _bookData.GetListAsync();
         }
 
-        public async Task<Books> InsertAsync(Books book)
+        public async Task<Books> InsertAsync(BookAdd book)
         {
-            return await _bookData.InsertAsync(book);
+            var item = _mapper.Map<Books>(book);
+            return await _bookData.InsertAsync(item);
         }
     }
 }

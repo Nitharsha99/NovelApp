@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NovelApp.Model;
+using NovelApp.Model.ViewModels;
 using NovelApp.Service.Interfaces;
 
 namespace NovelApp.Controllers
@@ -25,7 +26,7 @@ namespace NovelApp.Controllers
 
         [HttpPost]
         [Route("Insert")]
-        public async Task<IActionResult> AddBook(Books book)
+        public async Task<IActionResult> AddBook(BookAdd book)
         {
             var result = await _bookService.InsertAsync(book);
             return Ok(result);
