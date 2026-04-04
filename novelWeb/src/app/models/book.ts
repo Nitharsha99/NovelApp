@@ -32,3 +32,10 @@ export const statusDisplay = [
   { label: 'Re-run', value: BookStatus.Rerun },
   { label: 'Re-run Completed', value: BookStatus.RerunCompleted }
 ];
+
+export interface BookView {
+  title: string;
+  author: string;
+  status: BookStatus;
+  isAlreadyRead: boolean;
+}

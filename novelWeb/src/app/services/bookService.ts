@@ -8,9 +8,13 @@ import { Observable } from "rxjs";
 })
 export class BookService {
     private http = inject(HttpClient);
-    private apiUrl = 'http://localhost:5199/api/book'; 
+    private apiUrl = 'http://localhost:5199/api/book';
 
     addBook(book: BookAdd): Observable<BookAdd> {
         return this.http.post<Books>(`${this.apiUrl}/Insert`, book);
+    }
+
+    getlist(): Observable<Books[]> {
+        return this.http.get<Books[]>(`${this.apiUrl}/GetList`);
     }
 }

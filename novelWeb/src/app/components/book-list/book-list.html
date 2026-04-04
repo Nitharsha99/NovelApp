@@ -2,4 +2,50 @@
     <div class="d-grid d-md-flex justify-content-md-end">
         <button class="btn btn-custom" type="button" (click)="navigateToAdd()">Add Book</button>
     </div>
+
+    <h3 class="mb-3">Book List</h3>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-custom">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th class="text-center" style="width: 150px;">Already Read</th>
+                <th style="width: 300px;"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let book of books(); let i = index">
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.status }}</td>
+                <td class="text-center">
+                    <i *ngIf="book.isAlreadyRead; else notFollowing" class="bi bi bi-check-lg text-success fs-3">
+                    </i>
+
+                    <ng-template #notFollowing>
+                        <i class="bi bi-x-lg text-danger fs-4"></i>
+                    </ng-template>
+                </td>
+
+                <td class="text-center">
+                    <button class="btn btn-sm btn-primary me-2">
+                        Edit
+                    </button>
+
+                    <button class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+
+            <!-- <tr *ngIf="authors() =">
+                <td colspan="5" class="text-center text-muted">
+                    No records found
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
 </div>
