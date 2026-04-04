@@ -27,5 +27,11 @@ namespace NovelApp.Data
             await _context.SaveChangesAsync();
             return author;
         }
+
+        public async Task<Authors?> GetByIdAsync(int id)
+        {
+            return await _context.Authors
+                          .FirstOrDefaultAsync(a => a.Id == id);
+        }
     }
 }
