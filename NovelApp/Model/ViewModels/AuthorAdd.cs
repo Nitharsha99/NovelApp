@@ -2,7 +2,7 @@
 {
     public class AuthorAdd
     {
-        public string name;
-        public bool isFollowing;
+        public string Name { get; set; }
+        public bool IsFollowing { get; set; }
     }
 }
