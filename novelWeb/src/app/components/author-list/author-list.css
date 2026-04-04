@@ -1,15 +1,3 @@
-h4{
-    font-weight: 700;
-}
-
-.card {
-  border-radius: 12px;
-}
-
-.btn-light{
-    border-color: gray;
-}
-
 .btn-custom{
     background-color: #652a0E;
     color: white;
@@ -17,4 +5,9 @@ h4{
 
 .btn-custom:hover {
   background-color: #DAA06D;
+}
+
+.table-custom th{
+  background-color: #652a0E;
+  color: white;
 }

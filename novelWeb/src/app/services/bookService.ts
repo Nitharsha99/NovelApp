@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { Book, BookAdd } from "../models/book";
+import { Books, BookAdd } from "../models/book";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -11,6 +11,6 @@ export class BookService {
     private apiUrl = 'http://localhost:5199/api/book'; 
 
     addBook(book: BookAdd): Observable<BookAdd> {
-        return this.http.post<Book>(`${this.apiUrl}/Insert`, book);
+        return this.http.post<Books>(`${this.apiUrl}/Insert`, book);
     }
 }

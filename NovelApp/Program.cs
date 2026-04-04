@@ -19,7 +19,9 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
     ));
 
 builder.Services.AddScoped<IBookData, BookData>();
+builder.Services.AddScoped<IAuthorData, AuthorData>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 builder.Services.AddCors(options =>
 {

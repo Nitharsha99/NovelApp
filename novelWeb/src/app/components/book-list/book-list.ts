@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,8 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './book-list.css',
 })
 export class BookList implements OnInit {
-
-  constructor(private router: Router){}
+  private router = inject(Router);
 
   ngOnInit(): void {
     //

@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <div class="d-grid d-md-flex justify-content-md-end">
+        <button class="btn btn-custom" type="button" (click)="navigateToAdd()">Add Author</button>
+    </div>
+
+    <h3 class="mb-3">Book List</h3>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-custom">
+            <tr>
+                <th>Author</th>
+                <th class="text-center">Following</th>
+                <th style="width: 400px;"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let author of authors(); let i = index">
+                <td>{{ author.name }}</td>
+                <td class="text-center">
+                    <i *ngIf="author.isFollowing; else notFollowing" class="bi bi-check-circle-fill text-success fs-5">
+                    </i>
+
+                    <ng-template #notFollowing>
+                        <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                    </ng-template>
+                </td>
+
+                <td class="text-center">
+                    <button class="btn btn-sm btn-primary me-2">
+                        Edit
+                    </button>
+
+                    <button class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+
+            <!-- <tr *ngIf="authors() =">
+                <td colspan="5" class="text-center text-muted">
+                    No records found
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>

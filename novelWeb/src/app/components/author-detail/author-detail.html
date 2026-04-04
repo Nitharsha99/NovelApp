@@ -1,0 +1,50 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="card shadow-lg p-4">
+                <h4 class="mb-3">Add Author</h4>
+
+                <form id="bookForm" [formGroup]="authorForm">
+
+                    <div class="form-group row mb-4 mt-3">
+                        <label for="author" class="col-sm-3 col-form-label">Author Name : </label>
+                        <div class="col-sm-9">
+                            <input type="text" formControlName="name" class="form-control" id="author"
+                                placeholder="Enter Author Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Already Following :</label>
+                        <div class="col-sm-9 d-flex align-items-center">
+                            <input type="checkbox" formControlName="isFollowing" class="form-check-input"
+                                id="Following">
+                        </div>
+                    </div>
+
+                    <div *ngIf="message() as msg" class="alert alert-dismissible fade show"
+                        [ngClass]="'alert-' + msg.type" role="alert">
+
+                        {{ msg.message }}
+
+                        <button *ngIf="msg.showClose" type="button" class="btn-close"
+                            (click)="message.set(null)"></button>
+                    </div>
+
+                    <div class="text-end mt-4">
+                        <button type="submit" class="btn btn-light me-2" (click)="backToList()">
+                            Cancel
+                        </button>
+                        <button type="cancel" class="btn btn-custom" (click)="addAuthor()">
+                            Add
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
