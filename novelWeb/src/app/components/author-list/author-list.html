@@ -18,11 +18,11 @@
             <tr *ngFor="let author of authors(); let i = index">
                 <td>{{ author.name }}</td>
                 <td class="text-center">
-                    <i *ngIf="author.isFollowing; else notFollowing" class="bi bi-check-circle-fill text-success fs-5">
+                    <i *ngIf="author.isFollowing; else notFollowing" class="bi bi bi-check-lg text-success fs-3">
                     </i>
 
                     <ng-template #notFollowing>
-                        <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                        <i class="bi bi-x-lg text-danger fs-4"></i>
                     </ng-template>
                 </td>
 

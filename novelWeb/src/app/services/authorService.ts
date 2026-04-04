@@ -13,4 +13,8 @@ export class AuthorService {
     addAuthor(author: AuthorAdd): Observable<AuthorAdd> {
         return this.http.post<Authors>(`${this.apiUrl}/Insert`, author);
     }
+
+    getlist(): Observable<Authors[]>{
+        return this.http.get<Authors[]>(`${this.apiUrl}/GetList`);
+    }
 }
