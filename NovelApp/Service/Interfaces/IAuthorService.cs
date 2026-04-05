@@ -7,5 +7,6 @@ namespace NovelApp.Service.Interfaces
     {
         Task<List<Authors>> GetListAsync();
         Task<Authors> InsertAsync(AuthorAdd author);
+        Task<Authors?> GetByIdAsync(int id);
     }
 }

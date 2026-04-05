@@ -28,5 +28,10 @@ namespace NovelApp.Service
             var item = _mapper.Map<Authors>(author);
             return await _authorData.InsertAsync(item);
         }
+
+        public async Task<Authors?> GetByIdAsync(int id)
+        {
+            return await _authorData.GetByIdAsync(id);
+        }
     }
 }
