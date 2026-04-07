@@ -5,7 +5,7 @@ namespace NovelApp.Service.Interfaces
 {
     public interface IBookService
     {
-        Task<List<Books>> GetListAsync();
+        Task<List<BookView>> GetListAsync();
         Task<Books> InsertAsync(BookAdd book);
     }
 }

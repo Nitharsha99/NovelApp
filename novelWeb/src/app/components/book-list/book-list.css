@@ -6,3 +6,8 @@
 .btn-custom:hover {
   background-color: #DAA06D;
 }
+
+.table-custom th{
+  background-color: #652a0E;
+  color: white;
+}

@@ -17,7 +17,9 @@ namespace NovelApp.Data
 
         public async Task<List<Books>> GetListAsync()
         {
-            return await _context.Books.ToListAsync();
+            return await _context.Books
+                 .Include(b => b.Author)
+                 .ToListAsync();
         }
 
         public async Task<Books> InsertAsync(Books book)

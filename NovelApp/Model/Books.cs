@@ -12,5 +12,6 @@ namespace NovelApp.Model
         public bool IsAlreadyRead { get; set;}
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
+        public virtual Authors Author { get; set; }
     }
 }
