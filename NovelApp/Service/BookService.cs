@@ -16,9 +16,22 @@ namespace NovelApp.Service
             _mapper = mapper;
         }
 
-        public async Task<List<Books>> GetListAsync()
+        public async Task<List<BookView>> GetListAsync()
         {
-            return await _bookData.GetListAsync();
+            var books = await _bookData.GetListAsync();
+
+
+            var booksView = books.Select(b => new BookView
+            {
+                Id = b.Id,
+                Title = b.Title,
+                AuthorId = b.AuthorId,
+                Author = b.Author.Name, 
+                Status = b.Status,
+                IsAlreadyRead = b.IsAlreadyRead,
+            }).ToList();
+
+            return booksView;
         }
 
         public async Task<Books> InsertAsync(BookAdd book)

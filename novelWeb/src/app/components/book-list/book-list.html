@@ -20,13 +20,13 @@
             <tr *ngFor="let book of books(); let i = index">
                 <td>{{ book.title }}</td>
                 <td>{{ book.author }}</td>
-                <td>{{ book.status }}</td>
+                <td>{{ getStatusLabel(book.status) }}</td>
                 <td class="text-center">
-                    <i *ngIf="book.isAlreadyRead; else notFollowing" class="bi bi bi-check-lg text-success fs-3">
+                    <i *ngIf="book.isAlreadyRead; else notFollowing" class="bi bi-check-square text-success fs-3" >
                     </i>
 
                     <ng-template #notFollowing>
-                        <i class="bi bi-x-lg text-danger fs-4"></i>
+                        <i class="bi bi-x-square text-danger fs-3"></i>
                     </ng-template>
                 </td>
 

@@ -7,6 +7,9 @@ namespace NovelApp.Model.ViewModels
         public BookProfile()
         {
             CreateMap<BookAdd, Books>();
+            CreateMap<Books, BookView>()
+                .ForMember(dst => dst.AuthorId, opt => opt.MapFrom(src => src.Author.Id))
+                .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.Author.Name));
         }
     }
 }

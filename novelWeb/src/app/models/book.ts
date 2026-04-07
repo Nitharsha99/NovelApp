@@ -34,7 +34,9 @@ export const statusDisplay = [
 ];
 
 export interface BookView {
+  id: number;
   title: string;
+  authorId: number;
   author: string;
   status: BookStatus;
   isAlreadyRead: boolean;

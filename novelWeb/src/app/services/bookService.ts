@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { Books, BookAdd } from "../models/book";
+import { Books, BookAdd, BookView } from "../models/book";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -14,7 +14,7 @@ export class BookService {
         return this.http.post<Books>(`${this.apiUrl}/Insert`, book);
     }
 
-    getlist(): Observable<Books[]> {
-        return this.http.get<Books[]>(`${this.apiUrl}/GetList`);
+    getlist(): Observable<BookView[]> {
+        return this.http.get<BookView[]>(`${this.apiUrl}/GetList`);
     }
 }

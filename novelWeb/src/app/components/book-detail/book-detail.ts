@@ -5,6 +5,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BookAdd, BookStatus, statusDisplay } from '../../models/book';
 import { CommonModule } from '@angular/common';
 import { Alert } from '../../models/alert';
+import { AuthorService } from '../../services/authorService';
+import { Authors } from '../../models/author';
 
 @Component({
   selector: 'app-book-detail',
@@ -16,10 +18,11 @@ export class BookDetail implements OnInit {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private bookService = inject(BookService);
+  private authorService = inject(AuthorService);
 
   isLoading = signal(false);
   message = signal<Alert | null>(null);
-  //bookStatus: BookStatus | undefined;
+  authors = signal<Authors[] | null>(null);
 
   statusOptions = statusDisplay;
 
@@ -32,7 +35,11 @@ export class BookDetail implements OnInit {
   })
 
   ngOnInit(): void {
-      console.log(this.statusOptions);
+    this.authorService.getlist().subscribe({
+      next: (data) => {
+        this.authors.set(data);
+      }
+    });
   }
 
   backToList(): void {

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { Books, BookView } from '../../models/book';
+import { Books, BookView, statusDisplay } from '../../models/book';
 import { BookService } from '../../services/bookService';
 import { AuthorService } from '../../services/authorService';
 
@@ -19,13 +19,13 @@ export class BookList implements OnInit {
   books = signal<BookView[] | null>(null);
 
   ngOnInit(): void {
-    //
+    this.loadData();
   }
 
-  loadData(): void{
-     this.bookService.getlist().subscribe({
+  loadData(): void {
+    this.bookService.getlist().subscribe({
       next: (data) => {
-       // this.books.set(data);
+        this.books.set(data);
       },
       error: (err) => {
         console.error(err);
@@ -34,7 +34,11 @@ export class BookList implements OnInit {
     })
   }
 
-  navigateToAdd(): void{
+  navigateToAdd(): void {
     this.router.navigate(['/book-detail', 0]);
+  }
+
+  getStatusLabel(value: number): string {
+    return statusDisplay.find(s => s.value === value)?.label ?? 'Unknown';
   }
 }
