@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Ardalis.GuardClauses;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NovelApp.Model;
 using NovelApp.Model.ViewModels;
@@ -29,6 +30,8 @@ namespace NovelApp.Controllers
         [Route("Insert")]
         public async Task<IActionResult> AddAuthor(AuthorAdd author)
         {
+            Guard.Against.Null(author);
+
             var result = await _authorService.InsertAsync(author);
             return Ok(result);
         }
@@ -37,7 +40,19 @@ namespace NovelApp.Controllers
         [Route("GetById")]
         public async Task<IActionResult> GetByAuthorId(int id)
         {
+            Guard.Against.NegativeOrZero(id);
+
             var result = await _authorService.GetByIdAsync(id);
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> DeleteAuthor(int id)
+        {
+            Guard.Against.NegativeOrZero(id);
+
+            var result = await _authorService.DeleteAsync(id);
             return Ok(result);
         }
     }
