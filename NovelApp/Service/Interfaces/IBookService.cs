@@ -7,5 +7,7 @@ namespace NovelApp.Service.Interfaces
     {
         Task<List<BookView>> GetListAsync();
         Task<Books> InsertAsync(BookAdd book);
+        Task<Books?> GetByIdAsync(int id);
+        Task<bool> DeleteAsync(int id);
     }
 }

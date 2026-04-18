@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Ardalis.GuardClauses;
+using Microsoft.EntityFrameworkCore;
 using NovelApp.Data.Interfaces;
 using NovelApp.DbConfiguaration;
 using NovelApp.Model;
@@ -24,11 +25,38 @@ namespace NovelApp.Data
 
         public async Task<Books> InsertAsync(Books book)
         {
+            Guard.Against.Null(book);
+
             book.Created = DateTime.Now;
             book.Updated = DateTime.Now;
+
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
             return book;
+        }
+
+        public async Task<Books?> GetByIdAsync(int id)
+        {
+            Guard.Against.NegativeOrZero(id, nameof(id));
+
+            return await _context.Books
+                          .FirstOrDefaultAsync(a => a.Id == id);
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            Guard.Against.NegativeOrZero(id, nameof(id));
+
+            var item = await GetByIdAsync(id);
+            if (item == null)
+            {
+                return false;
+            }
+
+            _context.Books.Remove(item);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

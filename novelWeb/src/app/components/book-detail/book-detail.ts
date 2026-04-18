@@ -67,6 +67,7 @@ export class BookDetail implements OnInit {
             showClose: false
           });
           this.bookForm.reset();
+          this.backToList();
         },
         complete: () => {
           this.isLoading.set(false);

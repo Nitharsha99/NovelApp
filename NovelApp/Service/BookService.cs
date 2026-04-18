@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Ardalis.GuardClauses;
+using AutoMapper;
+using NovelApp.Data;
 using NovelApp.Data.Interfaces;
 using NovelApp.Model;
 using NovelApp.Model.ViewModels;
@@ -36,8 +38,21 @@ namespace NovelApp.Service
 
         public async Task<Books> InsertAsync(BookAdd book)
         {
+            Guard.Against.Null(book);
             var item = _mapper.Map<Books>(book);
             return await _bookData.InsertAsync(item);
+        }
+
+        public async Task<Books?> GetByIdAsync(int id)
+        {
+            Guard.Against.NegativeOrZero(id);
+            return await _bookData.GetByIdAsync(id);
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            Guard.Against.NegativeOrZero(id);
+            return await _bookData.DeleteAsync(id);
         }
     }
 }

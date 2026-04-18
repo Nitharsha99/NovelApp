@@ -5,6 +5,14 @@
 
     <h3 class="mb-3">Book List</h3>
 
+    <div *ngIf="message() as msg" class="alert alert-dismissible fade show" [ngClass]="'alert-' + msg.type"
+        role="alert">
+
+        {{ msg.message }}
+
+        <button *ngIf="msg.showClose" type="button" class="btn-close" (click)="message.set(null)"></button>
+    </div>
+
     <table class="table table-bordered table-striped table-hover">
         <thead class="table-custom">
             <tr>
@@ -22,7 +30,7 @@
                 <td>{{ book.author }}</td>
                 <td>{{ getStatusLabel(book.status) }}</td>
                 <td class="text-center">
-                    <i *ngIf="book.isAlreadyRead; else notFollowing" class="bi bi-check-square text-success fs-3" >
+                    <i *ngIf="book.isAlreadyRead; else notFollowing" class="bi bi-check-square text-success fs-3">
                     </i>
 
                     <ng-template #notFollowing>
@@ -35,7 +43,7 @@
                         Edit
                     </button>
 
-                    <button class="btn btn-sm btn-danger">
+                    <button class="btn btn-sm btn-danger" (click)="deleteBook(book.id)">
                         Delete
                     </button>
                 </td>

@@ -17,4 +17,12 @@ export class BookService {
     getlist(): Observable<BookView[]> {
         return this.http.get<BookView[]>(`${this.apiUrl}/GetList`);
     }
+
+    getById(id: number): Observable<Books> {
+        return this.http.get<Books>(`${this.apiUrl}/GetById?id=${id}`);
+    }
+
+    delete(id: number): Observable<Boolean> {
+        return this.http.delete<Boolean>(`${this.apiUrl}/Delete?id=${id}`);
+    }
 }
